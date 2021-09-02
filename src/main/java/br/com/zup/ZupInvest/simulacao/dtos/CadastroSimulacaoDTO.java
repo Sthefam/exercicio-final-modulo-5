@@ -1,10 +1,19 @@
 package br.com.zup.ZupInvest.simulacao.dtos;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class CadastroSimulacaoDTO {
+    @Size(min = 2, max = 20, message = "{cliente.nome}")
     private String nome;
+    @Email(message = "{cliente.email}")
     private String email;
+    @Size(min = 10, max = 11, message = "{cliente.telefone}")
     private String telefone;
+    @NotNull(message = "{cliente.valorAplicado}")
     private double valorAplicado;
+    @NotNull(message = "{mesesAplicado}")
     private int mesesAplicado;
 
     public CadastroSimulacaoDTO() {
