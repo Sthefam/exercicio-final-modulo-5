@@ -1,7 +1,10 @@
 package br.com.zup.ZupInvest.simulacao;
 
+import br.com.zup.ZupInvest.simulacao.dtos.CadastroSimulacaoDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -14,4 +17,10 @@ public class SimulacaoController {
         this.modelMapper = modelMapper;
         this.simulacaoService = simulacaoService;
     }
+
+    @PutMapping("/simulacao")
+    public void cadastrarSimulacao(@RequestBody CadastroSimulacaoDTO simulacaoDTO){
+        simulacaoService.cadastrarSimulacao(modelMapper.map(simulacaoDTO,Simulacao.class));
+    }
+
 }
