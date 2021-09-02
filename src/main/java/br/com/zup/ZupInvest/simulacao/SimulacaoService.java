@@ -8,6 +8,8 @@ public class SimulacaoService {
     @Autowired
     private SimulacaoRepository simulacaoRepository;
 
-
+    public void cadastrarSimulacao(Simulacao simulacao){
+        simulacaoRepository.save(simulacao);
+    }
 
 }
