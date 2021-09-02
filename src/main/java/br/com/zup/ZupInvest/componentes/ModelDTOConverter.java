@@ -9,7 +9,7 @@ public class ModelDTOConverter {
 
     @Bean
     public ModelMapper modelMapper(){
-        return new ModelMapper();'x'
+        return new ModelMapper();
     }
 
 }
