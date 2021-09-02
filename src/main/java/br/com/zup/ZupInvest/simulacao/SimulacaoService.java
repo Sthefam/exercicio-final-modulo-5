@@ -8,8 +8,14 @@ public class SimulacaoService {
     @Autowired
     private SimulacaoRepository simulacaoRepository;
 
-    public void cadastrarSimulacao(Simulacao simulacao){
+    public double cadastrarSimulacao(Simulacao simulacao){
         simulacaoRepository.save(simulacao);
+
+        return calcularInvestimento(simulacao);
+    }
+
+    public double calcularInvestimento(Simulacao simulacao){
+        return (simulacao.getValorAplicado() * ((0.5/100) * simulacao.getMesesAplicado()));
     }
 
 }
