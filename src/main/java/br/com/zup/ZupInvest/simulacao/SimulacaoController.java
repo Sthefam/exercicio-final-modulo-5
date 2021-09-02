@@ -1,11 +1,15 @@
 package br.com.zup.ZupInvest.simulacao;
 
 import br.com.zup.ZupInvest.simulacao.dtos.CadastroSimulacaoDTO;
+import br.com.zup.ZupInvest.simulacao.dtos.RendimentoDTO;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDate;
 
 @RestController
 public class SimulacaoController {
@@ -19,8 +23,12 @@ public class SimulacaoController {
     }
 
     @PutMapping("/simulacao")
-    public void cadastrarSimulacao(@RequestBody CadastroSimulacaoDTO simulacaoDTO){
-        simulacaoService.cadastrarSimulacao(modelMapper.map(simulacaoDTO,Simulacao.class));
+    public RendimentoDTO cadastrarSimulacao(@RequestBody CadastroSimulacaoDTO simulacaoDTO){
+        RendimentoDTO rendimentoDTO = new RendimentoDTO();
+        rendimentoDTO.setRendimento(simulacaoService.cadastrarSimulacao(modelMapper.map(simulacaoDTO,Simulacao.class)));
+        rendimentoDTO.setDataDeResgate(LocalDate.now().plusMonths(simulacaoDTO.getMesesAplicado()));
+        rendimentoDTO.setValorAplicado(simulacaoDTO.getValorAplicado());
+        return rendimentoDTO;
     }
 
 }
