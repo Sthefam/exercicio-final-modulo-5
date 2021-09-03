@@ -33,6 +33,17 @@ public class SimulacaoControllerTest {
     private CadastroSimulacaoDTO simulacaoDTO;
     private ObjectMapper objMapper;
 
+    @BeforeEach
+    public void setUp(){
+        simulacaoDTO = new CadastroSimulacaoDTO();
+        simulacaoDTO.setNome("Xablau");
+        simulacaoDTO.setEmail("xablauxablau.com");
+        simulacaoDTO.setTelefone("11985632564");
+        simulacaoDTO.setValorAplicado(1000);
+        simulacaoDTO.setMesesAplicado(12);
+        objMapper = new ObjectMapper();
+    }
+
 
 
 }
