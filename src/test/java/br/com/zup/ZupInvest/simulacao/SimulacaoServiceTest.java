@@ -18,6 +18,14 @@ public class SimulacaoServiceTest {
 
     private Simulacao simulacao;
 
-
+    @BeforeEach
+    public void setUp(){
+        simulacao = new Simulacao();
+        simulacao.setNome("Xablau");
+        simulacao.setEmail("xablau@xablau.com");
+        simulacao.setTelefone("11985236547");
+        simulacao.setValorAplicado(1000);
+        simulacao.setMesesAplicado(12);
+    }
 
 }
