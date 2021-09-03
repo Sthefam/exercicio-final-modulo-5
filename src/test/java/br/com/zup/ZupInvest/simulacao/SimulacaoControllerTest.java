@@ -44,6 +44,17 @@ public class SimulacaoControllerTest {
         objMapper = new ObjectMapper();
     }
 
+    @Test
+    public void testarRotaDeCadastroDeSimulacao() throws Exception {
+        Simulacao simulacao = modelMapper.map(simulacaoDTO, Simulacao.class);
+        Mockito.when(simulacaoService.cadastrarSimulacao(Mockito.any(Simulacao.class))).thenReturn(60.0);
 
+        String json = objMapper.writeValueAsString(simulacao);
+
+        ResultActions resultado = mockMVC.perform(MockMvcRequestBuilders.put("/simulacao")
+                .contentType(MediaType.APPLICATION_JSON).content(json))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+
+    }
 
 }
