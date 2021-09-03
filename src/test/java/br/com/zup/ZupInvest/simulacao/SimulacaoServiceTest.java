@@ -28,4 +28,13 @@ public class SimulacaoServiceTest {
         simulacao.setMesesAplicado(12);
     }
 
+    @Test
+    public void testarMetodoCadastrarSimulacao(){
+        Mockito.when(simulacaoRepository.save(Mockito.any(Simulacao.class))).thenReturn(simulacao);
+
+        double resultado = simulacaoService.cadastrarSimulacao(simulacao);
+        Assertions.assertEquals(60,resultado);
+    }
+
+
 }
