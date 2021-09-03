@@ -36,5 +36,10 @@ public class SimulacaoServiceTest {
         Assertions.assertEquals(60,resultado);
     }
 
+    @Test
+    public void testarMetodoCalcularInvestimento(){
+        double resultado = simulacaoService.calcularInvestimento(simulacao);
+        Assertions.assertEquals(60,resultado);
+    }
 
 }
