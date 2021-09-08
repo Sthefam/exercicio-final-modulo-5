@@ -23,9 +23,8 @@ public class SimulacaoController {
     }
 
     @PutMapping("/simulacao")
-    public void cadastrarSimulacao(@RequestBody @Valid CadastroSimulacaoDTO simulacaoDTO){
+    public RendimentoDTO cadastrarSimulacao(@RequestBody @Valid CadastroSimulacaoDTO simulacaoDTO){
         RendimentoDTO rendimentoDTO = new RendimentoDTO();
-        rendimentoDTO.setNome(simulacaoDTO.getNome());
         rendimentoDTO.setRendimento(simulacaoService.cadastrarSimulacao(modelMapper.map(simulacaoDTO,Simulacao.class)));
         rendimentoDTO.setDataDeResgate(LocalDate.now().plusMonths(simulacaoDTO.getMesesAplicado()));
         rendimentoDTO.setValorAplicado(simulacaoDTO.getValorAplicado());
